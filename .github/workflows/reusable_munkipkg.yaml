@@ -26,7 +26,7 @@ jobs:
 
       - name: Run munkipkg
         id: munkipkg
-        uses: joncrain/munkipkg-action@78141fcbee8cd0a2e4fbca7d9d463ff9f538f782
+        uses: joncrain/munkipkg-action@ab522f078901f7eeced6a70277df742d722fe9cc
         with:
           pkg_subdir: ${{ inputs.pkg_subdir }}
 
