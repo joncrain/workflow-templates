@@ -6,6 +6,9 @@ on:
       pkg_subdir:
         required: true
         type: string
+    secrets:
+      greeting:
+        required: true
 
 jobs:
   munki-pkg:
