@@ -19,7 +19,7 @@ jobs:
 
       - name: Test secret
         run: |
-          echo ${{ secrets.test }}
+          echo ${{ secrets.TEST }}
 
       - name: Run munkipkg
         id: munkipkg
