@@ -1,0 +1,32 @@
+name: munki-pkg
+
+on:
+  workflow_call:
+    inputs:
+      pkg_subdir:
+        required: true
+        type: string
+
+jobs:
+  munki-pkg:
+    runs-on: macos-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout (this repo)
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+
+      - name: Run munkipkg
+        id: munkipkg
+        uses: joncrain/munkipkg-action@78141fcbee8cd0a2e4fbca7d9d463ff9f538f782
+        with:
+          pkg_subdir: ${{ inputs.pkg_subdir }}
+
+      - name: Create Release
+        uses: softprops/action-gh-release@c9b46fe7aad9f02afd89b12450b780f52dacfb2d
+        with:
+          files: ${{ steps.munkipkg.outputs.filepath }}
+          tag_name: ${{ steps.munkipkg.outputs.tag }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
