@@ -17,6 +17,10 @@ jobs:
         with:
           lfs: true
 
+      - name: Test secret
+        run: |
+          echo ${{ secrets.test }}
+
       - name: Run munkipkg
         id: munkipkg
         uses: joncrain/munkipkg-action@78141fcbee8cd0a2e4fbca7d9d463ff9f538f782
